@@ -33,9 +33,9 @@ const PORT = process.env.PORT || 3000;
 mongoose.connect(process.env.MONGODB_URL)
 
 // Use the seederRouter for the '/api/seeder' route
-app.use('/', (req, res) => {
-        return res.status(202).json(`Server running on ${PORT}`);
-});
+// app.use('/', (req, res) => {
+//         return res.status(202).json(`Server running on ${PORT}`);
+// });
 app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 
