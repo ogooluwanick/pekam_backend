@@ -4,7 +4,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
+import userRouter from './routes/userRouter.js';
+import productRouter from './routes/productRouter.js';
 
+ 
 // Create an Express application
 const app=express()
 
@@ -30,6 +33,9 @@ const PORT = process.env.PORT || 3000;
 mongoose.connect(process.env.MONGODB_URL)
 
 // Use the seederRouter for the '/api/seeder' route
+app.use('/', (req, res) => {
+        return res.status(202).json(`Server running on ${PORT}`);
+});
 app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 
