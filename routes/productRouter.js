@@ -82,6 +82,7 @@ productRouter.put('/update/:id',(async(req,res)=>{
         const {name,description,quantity}= req.body
 
         const product= await Product.findById(id) 
+        console.log("productIndex",product)
 
         if (product){
                 product.name= name                             //if nothing comes from client put what was there b4 back
