@@ -11,11 +11,11 @@ const productRouter = express.Router();
 // @access Public
 productRouter.get('/list',(async(req,res)=>{
         const pageSize=req.query.limit
-        const page=Number(req.query.pageNumber) || 1
-        
-        
+        const page=Number(req.query.page) || 1
+        const startIndex = (page - 1) * pageSize;  
+
         const count=await Product.countDocuments()
-        const products= await Product.find().limit(pageSize).skip(pageSize*(page -1))
+        const products= await Product.find().limit(pageSize).skip(startIndex)
         const pages=Math.ceil(count/pageSize)
         
         res.json({products,page,pages});
